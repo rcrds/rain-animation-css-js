@@ -5,7 +5,7 @@ let ammountDrops = 0;
 let audio;
 let intervalCreate;
 let intervalClear;
-const hMaxRain = 900;
+const hMaxRain = 760;
 
 const createDrops = function () {
     if (ammountDrops < 2000) {
@@ -13,7 +13,7 @@ const createDrops = function () {
         let baseDropElement = document.getElementById("baseDrop");
         let index = 1;
         let position = 0;
-        do {
+        while (position<screen.width - 50) {
             let clone = baseDropElement.cloneNode(true);
             clone.id = clone.id + index;
             clone.className = "dropRain " + currentGroup;
@@ -23,7 +23,7 @@ const createDrops = function () {
             clone.style.transitionProperty = "top";
             rainContainer.appendChild(clone);
             index++;
-        } while (position<screen.width);
+        }
 
         setTimeout(function () {
             toRainGroup(currentGroup);
